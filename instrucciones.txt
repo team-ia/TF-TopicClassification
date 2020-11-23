@@ -1,0 +1,34 @@
+Para que funcione:
+1. Colocar la data en data.py
+2. Ejecutar "python training.py". Los pesos se ajustarán.
+3. Ejecutar "python clasification.py". Se ejecutarán las pruebas.
+
+Atributos por fila (entrada)
+1. User 1: clas. tema hablar (string)
+2. User 1: clas. tema escuchar (string)
+3. User 1: Edad
+4. User 1: género (femenino, masculino)
+5. User 2: clas. tema hablar (string)
+6. User 2: clas. tema escuchar (string)
+7. User 2: Edad (18-26)
+8. User 2: género (femenino, masculino)
+9. Resultado match (YES, NO)
+
+
+Atributos por fila (salida)
+1. User 1: clas. tema hablar (1-4)
+2. User 1: clas. tema escuchar (1-4)
+3. User 1: Edad (18-26)
+4. User 1: género (femenino: 1, masculino:0)
+5. User 2: clas. tema hablar (1-4)
+6. User 2: clas. tema escuchar (1-4)
+7. User 2: Edad (18-26)
+8. User 2: género (femenino: 1, masculino:0)
+9. Resultado match (YES, NO)
+
+Por hacer:
+1. Lectura de un archivo csv con el siguiente formato:
+among us,covid 19,18,1,gta v,vizcarra,20,0,YES (x fila)
+2. Entrenar la red (agregar ejemplos)
+1. Lectura de un archivo csv con el siguiente formato:
+1,1,18,0,1,3,24,1,NO
