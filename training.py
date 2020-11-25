@@ -19,6 +19,11 @@ ignore_words = ['?']
 training = []
 output = []
 
+data.data_actualidad()
+data.data_food()
+data.data_games()
+data.data_hobbie()
+
 data.init_data(words, classes, documents, ignore_words)
 data.init_training_data(training, output, words, classes, documents)
 

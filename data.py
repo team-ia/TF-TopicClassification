@@ -2,6 +2,8 @@
 import nltk
 from nltk.stem.lancaster import LancasterStemmer
 import os
+import csv
+import json
 stemmer = LancasterStemmer()
 
 # 3 classes of training data
@@ -60,7 +62,52 @@ training_data.append({"class":"juegos", "sentence":"fornite"})
 training_data.append({"class":"juegos", "sentence":"juegos"})
 training_data.append({"class":"juegos", "sentence":"mario bros"})
 
+def data_actualidad():
+    actual_list=[]
+    with open('data_cleared/actualidad.json', encoding="utf8") as actJson:
+        actual=json.load(actJson)
+        
+    for item in actual:
+        data={"class":None,"sentence":None}
+        data['class']="actualidad"
+        data['sentence']=item["nombre"]
+        training_data.append(data)
 
+
+def data_games():
+    actual_list=[]
+    with open('data_cleared/game_cleared.json', encoding="utf8") as actJson:
+        actual=json.load(actJson)
+        
+    for item in actual[:80]:
+        data={"class":None,"sentence":None}
+        data['class']="juegos"
+        data['sentence']=item["nombre"]
+        training_data.append(data)
+
+def data_food():
+    food_list=[]
+    with open('data_cleared/food_esp.csv', encoding="utf8") as foodCsv:
+        csv_reader=csv.reader(foodCsv,delimiter=',')
+        contador=0
+        for row in csv_reader:
+            contador=contador+1
+            if contador is 80:break
+            data={"class":None,"sentence":None}
+            data['class']="comida"
+            data['sentence']=row[0]
+            training_data.append(data)
+         
+def data_hobbie():
+    with open('data_cleared/hobbies.json', encoding="utf8") as hobbiesJson:
+        actual=json.load(hobbiesJson)
+        
+    for item in actual[:80]:
+        data={"class":None,"sentence":None}
+        data['class']="hobbies"
+        data['sentence']=item
+        training_data.append(data)
+             
 # loop through each sentence in our training data
 def init_data(words, classes, documents, ignore_words):
     
@@ -102,6 +149,7 @@ def init_training_data(training, output, words, classes, documents):
         pattern_words = [stemmer.stem(word.lower()) for word in pattern_words]
         # create our bag of words array
         for w in words:
+            print(w)
             bag.append(1) if w in pattern_words else bag.append(0)
 
         training.append(bag)

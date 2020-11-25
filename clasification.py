@@ -4,7 +4,9 @@ import neural_network as nn
 import data as data
 
 # probability threshold
-ERROR_THRESHOLD = 0.2
+ERROR_THRESHOLD =0.2
+
+
 
 # load our calculated synapse values
 synapse_file = 'synapses.json' 
@@ -14,7 +16,7 @@ with open(synapse_file) as data_file:
     synapse_1 = np.asarray(synapse['synapse1'])
     classes = np.asarray(synapse['classes'])
     words = np.asarray(synapse['words'])
-
+   
 def classify(sentence, show_details = False):
     results = nn.think(words, synapse_0, synapse_1, sentence, show_details)
     results = [[i,r] for i, r in enumerate(results) if r > ERROR_THRESHOLD ] 
@@ -35,3 +37,10 @@ classify("lucifer")
 classify("covid 19")
 classify("profesores")
 classify("tele")
+classify("dota 2")
+classify("platano")
+classify("guitarra")
+classify("Thanos")
+classify("hamburguesa")
+classify("alimento")
+classify("frijol")
